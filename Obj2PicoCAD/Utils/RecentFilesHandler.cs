@@ -11,12 +11,14 @@ namespace Obj2PicoCAD.Utils
 
         public static List<RecentFile> RecentFiles { get; set; } = new List<RecentFile>();
 
+
+        private const int MAX_RECENT_FILES = 10;
         public static void AddRecentFile(RecentFile recent)
         {
             RecentFiles.Add(recent);
             RecentFiles = RecentFiles.Distinct().ToList();
             RecentFiles = RecentFiles.OrderByDescending(x => x.Date).ToList();
-            if (RecentFiles.Count > 10)
+            if (RecentFiles.Count > MAX_RECENT_FILES)
             {
                 RecentFiles.RemoveAt(RecentFiles.Count - 1);
             }

@@ -8,6 +8,10 @@ namespace Obj2PicoCAD.Models
 		public Vector3 Pos { get; set; } =  new Vector3(0, 0, 0);
 		public Vector3 Rot { get; set; } = new Vector3(0, 0, 0);
 
+		public int AlphaColorIndex { get; set; } = 0;
+		public int BgColorIndex { get; set; } = 0;
+		public float Zoom { get; set; } = 16;
+		
 		private int _meshMode = 10;
 		
 				
@@ -94,6 +98,7 @@ namespace Obj2PicoCAD.Models
 		
 		private void WriteToTxt(string exportFilePath,float size, List<Vector3> v, List<List<int>> f)
 		{
+			
 			var filename = Path.GetFileNameWithoutExtension(exportFilePath);
 
 
@@ -101,11 +106,11 @@ namespace Obj2PicoCAD.Models
 				exportFilePath = exportFilePath + ".txt";
 			StreamWriter outputfile = new StreamWriter(exportFilePath);
 
-			var header = $"picocad;{filename};16;1;0\n";
+			var header = $"picocad;{filename};{Zoom};{BgColorIndex};{AlphaColorIndex}\n";
 			var fileSettings = $"{{\n{{\n name='{filename}',pos={{{Pos.x},{Pos.y},{Pos.z}}},rot={{{Rot.x},{Rot.y},{Rot.z}}},\n";
 
+			
 			outputfile.WriteLine(header + fileSettings);
-
 			outputfile.WriteLine(" v={");
 
 
