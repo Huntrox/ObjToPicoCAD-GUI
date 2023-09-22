@@ -11,7 +11,7 @@ To use ObjToPicoCAD-GUI, follow these steps:
 1. **Download and Install**:
 
    - Make sure you have the [.NET runtime](https://dotnet.microsoft.com/download/dotnet) installed on your system.
-   - Clone or download the ObjToPicoCAD-GUI repository from [your repository URL].
+   - Clone or download the ObjToPicoCAD-GUI repository from [SourceCode](https://github.com/Huntrox/ObjToPicoCAD-GUI/archive/refs/tags/v0.1.zip) or [Executable](https://github.com/Huntrox/ObjToPicoCAD-GUI/releases/download/v0.1/ObjToPicoCAD-GUI-Release.zip).
    - Build and run the application using your preferred development environment or run the precompiled executable if available.
 
 2. **User Interface**:
