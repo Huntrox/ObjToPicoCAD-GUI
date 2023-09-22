@@ -83,8 +83,6 @@ namespace Obj2PicoCAD
 
 			
 			//check if file directory is opend if not open directory and select the file
-			
-			var directory = Path.GetDirectoryName(exportPath);
 			Utilities.ShowInExplorer(exportPath);
 
 		}

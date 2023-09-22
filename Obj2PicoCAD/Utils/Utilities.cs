@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Obj2PicoCAD.Models;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Obj2PicoCAD.Utils
@@ -17,6 +18,8 @@ namespace Obj2PicoCAD.Utils
 
 		public static void ShowInExplorer(string filePath)
 		{
+			var directory = Path.GetDirectoryName(filePath);
+
 			IntPtr hWnd = FindWindow("CabinetWClass", Path.GetDirectoryName(filePath));
 			if (hWnd != IntPtr.Zero)
 			{
@@ -24,8 +27,11 @@ namespace Obj2PicoCAD.Utils
 			}
 			else
 			{
-				Process.Start("explorer.exe", Path.GetDirectoryName(filePath));
+				Process.Start("explorer.exe", directory);
+				//select it 
+				Process.Start("explorer.exe", "/select, " + filePath);
 			}
+
 		}
 
 		public static List<Color> rgbColors = new List<Color>
@@ -70,7 +76,6 @@ namespace Obj2PicoCAD.Utils
 
 		internal static void WriteToJson(string filePath, List<RecentFile> recentFiles)
 		{
-
 			CheckFile(filePath);
 			string json = JsonConvert.SerializeObject(recentFiles, Formatting.Indented);
 			File.WriteAllText(filePath, json);
